@@ -1,0 +1,309 @@
+#world-shell {
+  position:fixed;
+  z-index:0;
+  inset:0;
+  overflow:hidden;
+  background:var(--deep);
+  pointer-events:none;
+}
+
+#world {
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.world-shade {
+  position:absolute;
+  z-index:7;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 62% 35%,
+      transparent 10%,
+      rgba(3,28,32,.08) 35%,
+      rgba(3,28,32,.82) 100%
+    );
+}
+
+.world-grain {
+  position:absolute;
+  z-index:8;
+  inset:-100%;
+  opacity:.026;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:
+    grain .25s steps(2) infinite;
+  pointer-events:none;
+}
+
+@keyframes grain {
+  0% {
+    transform:translate3d(0,0,0);
+  }
+
+  25% {
+    transform:translate3d(2%,-3%,0);
+  }
+
+  50% {
+    transform:translate3d(-4%,2%,0);
+  }
+
+  75% {
+    transform:translate3d(3%,4%,0);
+  }
+
+  100% {
+    transform:translate3d(-2%,-2%,0);
+  }
+}
+
+#ambient-light {
+  position:fixed;
+  z-index:1;
+  top:-18vw;
+  right:-18vw;
+  width:62vw;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(26,160,168,.22),
+      transparent 67%
+    );
+  filter:blur(70px);
+  pointer-events:none;
+}
+
+.immersive-story {
+  position:relative;
+  z-index:5;
+  background:transparent;
+}
+
+.story-rail {
+  position:fixed;
+  z-index:120;
+  top:50%;
+  right:17px;
+  width:1px;
+  height:160px;
+  transform:translateY(-50%);
+  overflow:hidden;
+  background:
+    rgba(255,255,255,.10);
+  pointer-events:none;
+}
+
+.story-rail span {
+  display:block;
+  width:100%;
+  height:100%;
+  transform:scaleY(0);
+  transform-origin:top;
+  background:var(--gold);
+}
+
+.immersive-chapter {
+  position:relative;
+  min-height:112svh;
+  display:flex;
+  align-items:flex-end;
+  pointer-events:none;
+}
+
+.immersive-chapter__inner {
+  position:relative;
+  z-index:5;
+  display:flex;
+  align-items:flex-end;
+  min-height:112svh;
+  padding-bottom:
+    clamp(50px,7vw,90px);
+}
+
+.scene-copy {
+  width:min(100%,50rem);
+  border-left:
+    1px solid
+    rgba(199,164,105,.48);
+  padding:
+    clamp(1.3rem,2.6vw,2.2rem);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,13,15,.78),
+      rgba(2,13,15,.32),
+      transparent
+    );
+  backdrop-filter:blur(8px);
+  pointer-events:auto;
+  transform-origin:bottom left;
+}
+
+.scene-copy__meta {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:24px;
+  color:
+    rgba(255,255,255,.35);
+  font-size:.54rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.scene-copy .section-title {
+  margin-top:18px;
+}
+
+.scene-copy .copy {
+  margin-top:22px;
+}
+
+.scene-copy--center {
+  width:min(100%,74rem);
+  margin-inline:auto;
+  border:none;
+  background:transparent;
+  text-align:center;
+}
+
+.scene-copy--center .display {
+  max-width:11ch;
+  margin-inline:auto;
+}
+
+.scene-copy--center .button {
+  margin-top:30px;
+}
+
+.scene-copy__meta--center {
+  justify-content:center;
+}
+
+.amenity-labels {
+  position:absolute;
+  z-index:6;
+  top:50%;
+  right:5vw;
+  width:min(34vw,450px);
+  aspect-ratio:1;
+  transform:translateY(-50%);
+  pointer-events:none;
+}
+
+.amenity-labels span {
+  position:absolute;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:
+    rgba(255,255,255,.42);
+  font-size:.56rem;
+  font-weight:800;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+
+.amenity-labels span::before {
+  width:20px;
+  height:1px;
+  content:"";
+  background:var(--gold);
+}
+
+.amenity-labels span:nth-child(1) {
+  top:6%;
+  left:30%;
+}
+
+.amenity-labels span:nth-child(2) {
+  top:38%;
+  right:0;
+}
+
+.amenity-labels span:nth-child(3) {
+  bottom:10%;
+  right:13%;
+}
+
+.amenity-labels span:nth-child(4) {
+  bottom:8%;
+  left:4%;
+}
+
+.webgl-fallback #world-shell {
+  display:none;
+}
+
+.webgl-fallback .immersive-story {
+  background:
+    linear-gradient(
+      180deg,
+      #031c20,
+      #010a0c
+    );
+}
+
+@media (max-width:767px) {
+  .immersive-chapter,
+  .immersive-chapter__inner {
+    min-height:104svh;
+  }
+
+  .scene-copy {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(2,13,15,.9),
+        rgba(2,13,15,.52)
+      );
+  }
+
+  .amenity-labels {
+    display:none;
+  }
+
+  .story-rail {
+    right:7px;
+  }
+}
+
+@media (
+  prefers-reduced-motion:reduce
+) {
+  #world-shell,
+  #ambient-light,
+  .story-rail {
+    display:none;
+  }
+
+  .immersive-story {
+    background:
+      linear-gradient(
+        180deg,
+        var(--deep),
+        var(--ink)
+      );
+  }
+
+  .immersive-chapter {
+    min-height:auto;
+    padding:5rem 0;
+  }
+
+  .immersive-chapter__inner {
+    min-height:auto;
+    padding-bottom:0;
+  }
+
+  .scene-copy {
+    opacity:1 !important;
+    transform:none !important;
+  }
+}

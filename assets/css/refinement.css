@@ -1,0 +1,2483 @@
+/* ============================================================
+   RS HOLDINGS — VISUAL ENGINE V2
+   ============================================================ */
+
+:root {
+  --header-offset:
+    calc(var(--header) + 30px);
+
+  --quiet-line:
+    rgba(255,255,255,.075);
+
+  --quiet-copy:
+    rgba(255,255,255,.52);
+
+  --quiet-copy-2:
+    rgba(255,255,255,.34);
+}
+
+
+/* ============================================================
+   GLOBAL CORRECTIONS
+   ============================================================ */
+
+.section,
+.immersive-chapter {
+  scroll-margin-top:
+    var(--header-offset);
+}
+
+.section {
+  padding-block:
+    clamp(6.5rem,10vw,11rem);
+}
+
+.section-title {
+  max-width:12ch;
+}
+
+.copy {
+  color:
+    rgba(255,255,255,.56);
+}
+
+.asset-failed {
+  opacity:0 !important;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.site-header {
+  height:68px;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.055);
+
+  background:
+    rgba(1,11,13,.82);
+
+  backdrop-filter:
+    blur(20px)
+    saturate(130%);
+}
+
+.site-header__inner {
+  min-height:68px;
+}
+
+.brand img {
+  width:
+    clamp(92px,8vw,128px);
+
+  max-height:43px;
+}
+
+.desktop-nav {
+  gap:
+    clamp(14px,1.55vw,25px);
+}
+
+.desktop-nav > a:not(.button) {
+  font-size:.57rem;
+  color:
+    rgba(255,255,255,.48);
+}
+
+.desktop-nav .button {
+  min-height:44px;
+  padding:
+    0 20px;
+}
+
+@media (max-width:1100px) {
+  .site-header {
+    height:var(--header);
+  }
+}
+
+
+/* ============================================================
+   PROGRESS LINE
+   ============================================================ */
+
+#scroll-progress {
+  height:1px;
+
+  opacity:.56;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(199,164,105,.75),
+      rgba(243,240,232,.65)
+    );
+}
+
+
+/* ============================================================
+   IMMERSIVE STORY
+   ============================================================ */
+
+.immersive-story {
+  background:#02171a;
+}
+
+.immersive-chapter {
+  min-height:110svh;
+
+  overflow:hidden;
+
+  isolation:isolate;
+}
+
+.immersive-chapter__inner {
+  min-height:110svh;
+
+  position:relative;
+
+  z-index:8;
+
+  align-items:flex-end;
+
+  padding-bottom:
+    clamp(4rem,7vw,6.5rem);
+}
+
+
+/* ============================================================
+   GUARANTEED IMAGE LAYER
+   ============================================================ */
+
+.scene-fallback {
+  position:absolute;
+
+  z-index:1;
+
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+}
+
+.scene-fallback__media {
+  position:absolute;
+
+  inset:
+    clamp(5rem,8vw,8rem)
+    clamp(2rem,5vw,6rem)
+    clamp(3rem,5vw,5rem)
+    clamp(23rem,39vw,44rem);
+
+  transform-style:
+    preserve-3d;
+
+  perspective:
+    1200px;
+}
+
+.scene-fallback__frame {
+  position:absolute;
+
+  overflow:hidden;
+
+  margin:0;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  background:
+    #06292e;
+
+  box-shadow:
+    0 40px 100px
+    rgba(0,0,0,.30);
+}
+
+.scene-fallback__frame img {
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  opacity:.86;
+
+  filter:
+    saturate(.88)
+    contrast(1.04);
+
+  transform:
+    scale(1.01);
+}
+
+.scene-fallback__shade {
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(1,11,13,.96) 0%,
+      rgba(1,11,13,.79) 27%,
+      rgba(1,11,13,.24) 54%,
+      rgba(1,11,13,.06) 100%
+    ),
+
+    linear-gradient(
+      0deg,
+      rgba(1,12,14,.90) 0%,
+      transparent 38%,
+      rgba(0,0,0,.12) 100%
+    );
+}
+
+
+/* ARRIVAL */
+
+.scene-fallback--arrival
+.scene-fallback__frame--1 {
+  inset:4% 0 4% 0;
+
+  transform:
+    perspective(1300px)
+    rotateY(-3deg);
+}
+
+
+/* WATERFRONT */
+
+.scene-fallback--waterfront
+.scene-fallback__frame--1 {
+  width:72%;
+  height:72%;
+
+  right:0;
+  top:4%;
+}
+
+.scene-fallback--waterfront
+.scene-fallback__frame--2 {
+  width:38%;
+  height:39%;
+
+  left:0;
+  bottom:1%;
+
+  transform:
+    translateZ(30px);
+}
+
+.scene-fallback--waterfront
+.scene-fallback__frame--3 {
+  width:31%;
+  height:32%;
+
+  right:7%;
+  bottom:0;
+
+  transform:
+    translateZ(60px);
+}
+
+
+/* MARINA */
+
+.scene-fallback--marina
+.scene-fallback__frame--1 {
+  inset:4% 0 3% 0;
+}
+
+
+/* PROMENADE */
+
+.scene-fallback--promenade
+.scene-fallback__frame {
+  width:42%;
+  height:53%;
+}
+
+.scene-fallback--promenade
+.scene-fallback__frame--1 {
+  left:1%;
+  top:8%;
+
+  transform:
+    rotateY(10deg)
+    translateZ(40px);
+}
+
+.scene-fallback--promenade
+.scene-fallback__frame--2 {
+  left:30%;
+  top:24%;
+
+  transform:
+    rotateY(-7deg)
+    translateZ(80px);
+}
+
+.scene-fallback--promenade
+.scene-fallback__frame--3 {
+  right:0;
+  top:5%;
+
+  transform:
+    rotateY(-12deg);
+}
+
+.scene-fallback--promenade
+.scene-fallback__frame--4 {
+  right:8%;
+  bottom:0;
+
+  width:33%;
+  height:35%;
+}
+
+
+/* BOULEVARD */
+
+.scene-fallback--boulevard
+.scene-fallback__frame {
+  width:42%;
+  height:58%;
+}
+
+.scene-fallback--boulevard
+.scene-fallback__frame--1 {
+  left:0;
+  top:8%;
+
+  transform:
+    perspective(900px)
+    rotateY(15deg);
+}
+
+.scene-fallback--boulevard
+.scene-fallback__frame--2 {
+  left:29%;
+  top:20%;
+
+  transform:
+    translateZ(50px);
+}
+
+.scene-fallback--boulevard
+.scene-fallback__frame--3 {
+  right:0;
+  top:8%;
+
+  transform:
+    perspective(900px)
+    rotateY(-15deg);
+}
+
+.scene-fallback--boulevard
+.scene-fallback__frame--4 {
+  right:13%;
+  bottom:0;
+
+  width:36%;
+  height:34%;
+}
+
+
+/* QANTARA */
+
+.scene-fallback--qantara
+.scene-fallback__media {
+  perspective:
+    900px;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame {
+  width:34%;
+  height:48%;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--1 {
+  left:0;
+  top:8%;
+
+  transform:
+    rotateY(18deg)
+    translateZ(-40px);
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--2 {
+  left:22%;
+  top:23%;
+
+  transform:
+    translateZ(60px);
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--3 {
+  left:45%;
+  top:7%;
+
+  transform:
+    translateZ(120px);
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--4 {
+  right:0;
+  top:21%;
+
+  transform:
+    rotateY(-18deg)
+    translateZ(20px);
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--5 {
+  left:35%;
+  bottom:0;
+
+  width:31%;
+  height:31%;
+
+  transform:
+    translateZ(160px);
+}
+
+
+/* COMMUNITY */
+
+.scene-fallback--community
+.scene-fallback__frame {
+  width:45%;
+  height:46%;
+}
+
+.scene-fallback--community
+.scene-fallback__frame--1 {
+  left:0;
+  top:0;
+}
+
+.scene-fallback--community
+.scene-fallback__frame--2 {
+  right:0;
+  top:6%;
+}
+
+.scene-fallback--community
+.scene-fallback__frame--3 {
+  left:8%;
+  bottom:0;
+}
+
+.scene-fallback--community
+.scene-fallback__frame--4 {
+  right:5%;
+  bottom:0;
+}
+
+
+/* DEVELOPMENT */
+
+.scene-fallback--development
+.scene-fallback__frame {
+  width:36%;
+  height:39%;
+}
+
+.scene-fallback--development
+.scene-fallback__frame--1 {
+  left:1%;
+  top:4%;
+}
+
+.scene-fallback--development
+.scene-fallback__frame--2 {
+  left:34%;
+  top:14%;
+}
+
+.scene-fallback--development
+.scene-fallback__frame--3 {
+  right:0;
+  top:3%;
+}
+
+.scene-fallback--development
+.scene-fallback__frame--4 {
+  left:15%;
+  bottom:0;
+}
+
+.scene-fallback--development
+.scene-fallback__frame--5 {
+  right:13%;
+  bottom:0;
+}
+
+
+/* LOCATION */
+
+.scene-fallback--location
+.scene-fallback__frame--1 {
+  inset:3% 2% 2% 2%;
+
+  transform-origin:
+    center bottom;
+
+  transform:
+    perspective(1100px)
+    rotateX(5deg);
+}
+
+.scene-fallback--location
+.scene-fallback__frame img {
+  object-fit:contain;
+
+  background:
+    rgba(2,17,20,.8);
+}
+
+
+/* ============================================================
+   IMMERSIVE TYPOGRAPHY
+   ============================================================ */
+
+.scene-copy {
+  width:
+    min(42vw,640px);
+
+  max-width:none;
+
+  padding:
+    0 2rem
+    0
+    clamp(1.4rem,2vw,2.2rem);
+
+  border-left:
+    1px solid
+    rgba(199,164,105,.48);
+
+  background:
+    transparent;
+
+  backdrop-filter:none;
+}
+
+.scene-copy__meta {
+  max-width:31rem;
+
+  padding-bottom:1rem;
+
+  margin-bottom:
+    clamp(1rem,2vw,1.5rem);
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.07);
+
+  font-size:.51rem;
+}
+
+.scene-copy .section-title {
+  max-width:9ch;
+
+  font-size:
+    clamp(3rem,5vw,6rem);
+
+  line-height:.91;
+}
+
+.scene-copy .copy {
+  max-width:31rem;
+
+  color:
+    rgba(255,255,255,.58);
+}
+
+.scene-copy--center {
+  width:min(100%,74rem);
+
+  margin-inline:auto;
+
+  padding:0;
+
+  border:0;
+
+  text-align:center;
+}
+
+
+/* ============================================================
+   PORTFOLIO — FORCE NEW SYSTEM
+   ============================================================ */
+
+#portfolio {
+  overflow:hidden;
+}
+
+.portfolio-grid {
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(12,minmax(0,1fr)) !important;
+
+  gap:
+    clamp(1rem,1.5vw,1.6rem) !important;
+
+  margin-top:0 !important;
+}
+
+.project-card {
+  display:none !important;
+}
+
+.project-v2 {
+  position:relative;
+
+  grid-column:
+    span 6;
+
+  min-height:
+    clamp(460px,48vw,700px);
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    var(--quiet-line);
+
+  background:
+    #052226;
+
+  isolation:isolate;
+}
+
+.project-v2--1 {
+  grid-column:
+    span 8;
+
+  min-height:
+    min(78vh,820px);
+}
+
+.project-v2--2 {
+  grid-column:
+    span 4;
+
+  min-height:
+    min(78vh,820px);
+}
+
+.project-v2--3 {
+  grid-column:
+    span 5;
+}
+
+.project-v2--4 {
+  grid-column:
+    span 7;
+}
+
+.project-v2__media {
+  position:absolute;
+
+  inset:0;
+}
+
+.project-v2__media img {
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  opacity:.74;
+
+  filter:
+    saturate(.82)
+    contrast(1.04);
+
+  transition:
+    transform 1s
+    cubic-bezier(.22,1,.36,1),
+    opacity .6s ease;
+}
+
+.project-v2:hover
+.project-v2__media img {
+  transform:
+    scale(1.035);
+
+  opacity:.84;
+}
+
+.project-v2__shade {
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    linear-gradient(
+      0deg,
+      rgba(1,9,11,.98) 0%,
+      rgba(1,9,11,.73) 34%,
+      rgba(1,9,11,.08) 76%
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(1,9,11,.20),
+      transparent
+    );
+}
+
+.project-v2__content {
+  position:absolute;
+
+  z-index:3;
+
+  inset:
+    auto
+    clamp(1.5rem,3vw,3rem)
+    clamp(1.6rem,3vw,3rem);
+}
+
+.project-v2__index {
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  gap:20px;
+
+  max-width:34rem;
+
+  color:
+    rgba(255,255,255,.38);
+
+  font-size:.54rem;
+
+  font-weight:800;
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.project-v2 h3 {
+  max-width:9ch;
+
+  margin:
+    clamp(1rem,1.5vw,1.5rem)
+    0
+    0;
+
+  font-size:
+    clamp(2.7rem,4.5vw,5.4rem);
+
+  font-weight:520;
+
+  line-height:.91;
+
+  letter-spacing:-.055em;
+}
+
+.project-v2 p {
+  max-width:30rem;
+
+  margin:
+    1.2rem
+    0
+    0;
+
+  color:
+    rgba(255,255,255,.52);
+
+  font-size:.84rem;
+
+  line-height:1.7;
+}
+
+.project-v2__rule {
+  width:46px;
+
+  height:1px;
+
+  margin-top:1.6rem;
+
+  background:
+    var(--gold);
+
+  transition:
+    width .5s
+    cubic-bezier(.22,1,.36,1);
+}
+
+.project-v2:hover
+.project-v2__rule {
+  width:90px;
+}
+
+
+/* ABSTRACT PROJECT CARDS */
+
+.project-v2__geometry {
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    radial-gradient(
+      circle at 76% 25%,
+      rgba(24,137,146,.25),
+      transparent 34rem
+    ),
+
+    linear-gradient(
+      145deg,
+      #07343a,
+      #021519
+    );
+}
+
+.project-v2__geometry i {
+  position:absolute;
+
+  border:
+    1px solid
+    rgba(199,164,105,.16);
+
+  border-radius:50%;
+}
+
+.project-v2__geometry i:nth-child(1) {
+  width:70%;
+  aspect-ratio:1;
+
+  top:-22%;
+  right:-25%;
+}
+
+.project-v2__geometry i:nth-child(2) {
+  width:48%;
+  aspect-ratio:1;
+
+  bottom:-10%;
+  left:-14%;
+}
+
+.project-v2__geometry i:nth-child(3) {
+  width:1px;
+  height:140%;
+
+  top:-20%;
+  left:62%;
+
+  border:0;
+
+  border-radius:0;
+
+  background:
+    rgba(255,255,255,.065);
+
+  transform:
+    rotate(32deg);
+}
+
+
+/* ============================================================
+   EXPERTISE — FIX HEADING COLLISION + SCALE
+   ============================================================ */
+
+#expertise {
+  padding-top:
+    clamp(8rem,12vw,13rem);
+}
+
+#expertise > .container >
+.section-title {
+  margin-bottom:
+    clamp(3.5rem,6vw,6rem);
+}
+
+.expertise-grid {
+  margin-top:
+    clamp(2rem,4vw,4rem);
+}
+
+.expertise-card {
+  padding:
+    clamp(2.3rem,4vw,4rem)
+    0;
+}
+
+.expertise-card h3 {
+  font-size:
+    clamp(2rem,3.4vw,4rem);
+
+  max-width:12ch;
+}
+
+
+/* ============================================================
+   LEADERSHIP — FORCE ONE PHOTO ONLY
+   ============================================================ */
+
+.leadership-grid {
+  display:grid;
+
+  gap:
+    clamp(4rem,8vw,8rem);
+}
+
+.leader-card,
+.leader-strip {
+  display:none !important;
+}
+
+.leader-v2 {
+  display:grid;
+
+  grid-template-columns:
+    minmax(280px,.82fr)
+    minmax(0,1.18fr);
+
+  border-top:
+    1px solid
+    var(--quiet-line);
+
+  padding-top:
+    clamp(1rem,2vw,1.5rem);
+}
+
+.leader-v2:nth-child(even)
+.leader-v2__media {
+  order:2;
+}
+
+.leader-v2:nth-child(even)
+.leader-v2__content {
+  order:1;
+
+  padding-left:0;
+
+  padding-right:
+    clamp(3rem,7vw,8rem);
+}
+
+.leader-v2__media {
+  position:relative;
+
+  aspect-ratio:
+    4 / 5;
+
+  overflow:hidden;
+
+  background:
+    #05262b;
+}
+
+.leader-v2__media > img {
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  object-position:
+    center 16%;
+
+  filter:
+    saturate(.82)
+    contrast(1.03);
+
+  transition:
+    transform 1s
+    cubic-bezier(.22,1,.36,1);
+}
+
+.leader-v2:hover
+.leader-v2__media > img {
+  transform:
+    scale(1.025);
+}
+
+.leader-v2__shade {
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(1,12,14,.38),
+      transparent 40%
+    );
+}
+
+.leader-v2__content {
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  padding-left:
+    clamp(3rem,7vw,8rem);
+}
+
+.leader-v2__index {
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  max-width:31rem;
+
+  color:
+    rgba(255,255,255,.32);
+
+  font-size:.54rem;
+
+  font-weight:800;
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.leader-v2 h3 {
+  max-width:10ch;
+
+  margin:
+    clamp(2rem,3vw,3rem)
+    0
+    0;
+
+  font-size:
+    clamp(2.8rem,5vw,5.8rem);
+
+  font-weight:520;
+
+  letter-spacing:-.055em;
+
+  line-height:.91;
+}
+
+.leader-v2__role {
+  margin:
+    1.1rem
+    0
+    0;
+
+  color:
+    var(--gold);
+
+  font-size:.63rem;
+
+  font-weight:800;
+
+  letter-spacing:.11em;
+
+  text-transform:uppercase;
+}
+
+.leader-v2__bio {
+  max-width:33rem;
+
+  margin:
+    1.6rem
+    0
+    0;
+
+  color:
+    rgba(255,255,255,.50);
+
+  font-size:.9rem;
+
+  line-height:1.75;
+}
+
+.leader-v2__placeholder {
+  display:grid;
+
+  place-items:center;
+
+  width:100%;
+  height:100%;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(20,133,143,.22),
+      transparent 42%
+    ),
+
+    #03191d;
+}
+
+.leader-v2__placeholder span {
+  color:
+    rgba(255,255,255,.08);
+
+  font-size:
+    clamp(5rem,10vw,10rem);
+
+  font-weight:800;
+}
+
+
+/* ============================================================
+   DESKTOP
+   ============================================================ */
+
+@media (min-width:1200px) {
+
+  .scene-copy {
+    margin-left:
+      clamp(0px,2vw,2rem);
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width:980px) {
+
+  .scene-fallback__media {
+    inset:
+      7rem
+      2rem
+      4rem
+      37%;
+  }
+
+  .scene-copy {
+    width:
+      min(52vw,520px);
+  }
+
+  .portfolio-grid {
+    grid-template-columns:
+      repeat(2,minmax(0,1fr))
+      !important;
+  }
+
+  .project-v2,
+  .project-v2--1,
+  .project-v2--2,
+  .project-v2--3,
+  .project-v2--4 {
+    grid-column:
+      span 1;
+
+    min-height:
+      620px;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width:767px) {
+
+  .immersive-chapter,
+  .immersive-chapter__inner {
+    min-height:
+      100svh;
+  }
+
+  .scene-fallback__media {
+    inset:
+      6rem
+      .8rem
+      15rem
+      18%;
+  }
+
+  .scene-fallback__shade {
+    background:
+
+      linear-gradient(
+        0deg,
+        rgba(1,11,13,.98) 0%,
+        rgba(1,11,13,.82) 34%,
+        rgba(1,11,13,.15) 72%
+      );
+  }
+
+  .scene-copy {
+    width:
+      min(100%,520px);
+
+    padding:
+      0
+      1rem
+      0
+      1.1rem;
+  }
+
+  .scene-copy .section-title {
+    font-size:
+      clamp(2.8rem,13vw,4.7rem);
+  }
+
+  .scene-copy .copy {
+    font-size:.88rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns:
+      1fr !important;
+  }
+
+  .project-v2,
+  .project-v2--1,
+  .project-v2--2,
+  .project-v2--3,
+  .project-v2--4 {
+    grid-column:
+      1 !important;
+
+    min-height:
+      74svh;
+  }
+
+  .project-v2 h3 {
+    font-size:
+      clamp(2.7rem,12vw,4.5rem);
+  }
+
+  .leader-v2 {
+    display:block;
+  }
+
+  .leader-v2__content {
+    padding:
+      2rem 0 0 !important;
+  }
+
+  .leader-v2:nth-child(even)
+  .leader-v2__media {
+    order:initial;
+  }
+
+  .leader-v2 h3 {
+    font-size:
+      clamp(2.8rem,13vw,4.5rem);
+  }
+
+}
+
+
+/* ============================================================
+   WEBGL FALLBACK
+   ============================================================ */
+
+.webgl-fallback
+.scene-fallback__frame img {
+  opacity:1;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (
+  prefers-reduced-motion:reduce
+) {
+
+  .scene-fallback__frame {
+    transform:none !important;
+  }
+
+  .scene-fallback__frame img,
+  .project-v2__media img,
+  .leader-v2__media img {
+    transform:none !important;
+  }
+
+}
+
+/* ============================================================
+   V3 — SPATIAL RHYTHM CORRECTION
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. GLOBAL SECTION RHYTHM
+   ------------------------------------------------------------ */
+
+:root {
+  --header-safe: 96px;
+}
+
+section[id] {
+  scroll-margin-top: var(--header-safe);
+}
+
+.section {
+  padding-block:
+    clamp(5rem, 7.5vw, 8rem);
+}
+
+.section-heading {
+  margin-bottom:
+    clamp(2.8rem, 4vw, 4.5rem);
+}
+
+.section-title {
+  line-height:.92;
+}
+
+.copy {
+  line-height:1.68;
+}
+
+
+/* ------------------------------------------------------------
+   2. HEADER — REDUCE VISUAL DOMINANCE
+   ------------------------------------------------------------ */
+
+.site-header {
+  height:64px !important;
+}
+
+.site-header__inner {
+  height:64px !important;
+}
+
+.brand img {
+  width:
+    clamp(82px, 7vw, 112px) !important;
+
+  max-height:38px !important;
+}
+
+.desktop-nav .button {
+  min-height:42px;
+  padding-inline:18px;
+}
+
+
+/* ------------------------------------------------------------
+   3. IMMERSIVE STORY — REMOVE DEAD VERTICAL SPACE
+   ------------------------------------------------------------ */
+
+.immersive-chapter {
+  min-height:
+    clamp(720px, 92svh, 920px) !important;
+
+  align-items:center !important;
+}
+
+.immersive-chapter__inner {
+  min-height:
+    clamp(720px, 92svh, 920px) !important;
+
+  align-items:center !important;
+
+  padding-top:
+    clamp(5rem, 7vw, 7rem) !important;
+
+  padding-bottom:
+    clamp(2.5rem, 4vw, 4rem) !important;
+}
+
+
+/* ------------------------------------------------------------
+   4. IMMERSIVE COPY — MOVE UP / REDUCE BLOCK SIZE
+   ------------------------------------------------------------ */
+
+.scene-copy {
+  width:
+    min(34vw, 520px) !important;
+
+  margin-top:
+    clamp(1rem, 2vw, 2rem);
+
+  padding:
+    0
+    clamp(1rem, 1.6vw, 1.6rem)
+    0
+    clamp(1.1rem, 1.7vw, 1.8rem) !important;
+}
+
+.scene-copy__meta {
+  max-width:27rem;
+
+  margin-bottom:
+    clamp(.9rem, 1.4vw, 1.2rem);
+
+  padding-bottom:.8rem;
+}
+
+.scene-copy .section-title {
+  max-width:8.5ch !important;
+
+  font-size:
+    clamp(2.8rem, 4.1vw, 5rem) !important;
+
+  line-height:.90 !important;
+}
+
+.scene-copy .copy {
+  max-width:27rem;
+
+  margin-top:
+    clamp(1rem, 1.5vw, 1.35rem) !important;
+
+  font-size:
+    clamp(.88rem, .95vw, 1rem);
+}
+
+
+/* ------------------------------------------------------------
+   5. IMMERSIVE IMAGES — TAKE OVER MORE OF THE VIEWPORT
+   ------------------------------------------------------------ */
+
+.scene-fallback__media {
+  inset:
+    clamp(4.5rem, 6vw, 6rem)
+    clamp(1.5rem, 3vw, 3rem)
+    clamp(2rem, 3vw, 3rem)
+    clamp(32vw, 36vw, 38rem) !important;
+}
+
+.scene-fallback__shade {
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(1,11,13,.94) 0%,
+      rgba(1,11,13,.76) 24%,
+      rgba(1,11,13,.26) 43%,
+      rgba(1,11,13,.04) 70%
+    ),
+
+    linear-gradient(
+      0deg,
+      rgba(1,12,14,.72) 0%,
+      transparent 30%,
+      transparent 100%
+    ) !important;
+}
+
+.scene-fallback__frame img {
+  opacity:.94 !important;
+}
+
+
+/* ------------------------------------------------------------
+   6. ARRIVAL / MARINA — FULL CINEMATIC IMAGE
+   ------------------------------------------------------------ */
+
+.scene-fallback--arrival
+.scene-fallback__frame--1,
+
+.scene-fallback--marina
+.scene-fallback__frame--1 {
+  inset:0 !important;
+}
+
+.scene-fallback--arrival
+.scene-fallback__frame--1 img,
+
+.scene-fallback--marina
+.scene-fallback__frame--1 img {
+  object-fit:cover;
+}
+
+
+/* ------------------------------------------------------------
+   7. WATERFRONT — REDUCE EMPTY CORNERS
+   ------------------------------------------------------------ */
+
+.scene-fallback--waterfront
+.scene-fallback__frame--1 {
+  width:78% !important;
+  height:76% !important;
+
+  right:0 !important;
+  top:0 !important;
+}
+
+.scene-fallback--waterfront
+.scene-fallback__frame--2 {
+  width:42% !important;
+  height:43% !important;
+
+  left:0 !important;
+  bottom:0 !important;
+}
+
+.scene-fallback--waterfront
+.scene-fallback__frame--3 {
+  width:36% !important;
+  height:35% !important;
+
+  right:4% !important;
+  bottom:0 !important;
+}
+
+
+/* ------------------------------------------------------------
+   8. QANTARA — FILL SCREEN LIKE AN ARCHITECTURAL TUNNEL
+   ------------------------------------------------------------ */
+
+.scene-fallback--qantara
+.scene-fallback__media {
+  inset:
+    5rem
+    1rem
+    2rem
+    31vw !important;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame {
+  width:39% !important;
+  height:54% !important;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--1 {
+  left:0 !important;
+  top:6% !important;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--2 {
+  left:20% !important;
+  top:27% !important;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--3 {
+  left:42% !important;
+  top:4% !important;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--4 {
+  right:0 !important;
+  top:23% !important;
+}
+
+.scene-fallback--qantara
+.scene-fallback__frame--5 {
+  left:33% !important;
+  bottom:0 !important;
+
+  width:36% !important;
+  height:34% !important;
+}
+
+
+/* ------------------------------------------------------------
+   9. PORTFOLIO — WIDER, FEWER, LESS CRAMPED
+   ------------------------------------------------------------ */
+
+#portfolio {
+  padding-top:
+    clamp(6rem, 8vw, 9rem) !important;
+
+  padding-bottom:
+    clamp(6rem, 8vw, 9rem) !important;
+}
+
+.portfolio-grid {
+  gap:
+    clamp(1.25rem, 1.8vw, 2rem) !important;
+}
+
+.project-v2 {
+  min-height:
+    clamp(430px, 42vw, 620px) !important;
+}
+
+.project-v2--1,
+.project-v2--2 {
+  min-height:
+    clamp(520px, 62vh, 720px) !important;
+}
+
+.project-v2 h3 {
+  font-size:
+    clamp(2.6rem, 3.9vw, 4.8rem) !important;
+
+  max-width:11ch !important;
+}
+
+.project-v2 p {
+  max-width:27rem;
+}
+
+
+/* ------------------------------------------------------------
+   10. EXPERTISE — FIX CLIPPED HEADING / MASSIVE ROWS
+   ------------------------------------------------------------ */
+
+#expertise {
+  padding-top:
+    clamp(7rem, 9vw, 10rem) !important;
+}
+
+#expertise .section-title {
+  margin-top:16px !important;
+
+  margin-bottom:
+    clamp(2.5rem, 4vw, 4rem) !important;
+
+  max-width:14ch !important;
+}
+
+.expertise-grid {
+  margin-top:0 !important;
+}
+
+.expertise-card {
+  min-height:0 !important;
+
+  padding:
+    clamp(1.8rem, 2.8vw, 3rem)
+    0 !important;
+}
+
+.expertise-card h3 {
+  font-size:
+    clamp(1.9rem, 3vw, 3.5rem) !important;
+
+  line-height:.96 !important;
+}
+
+.expertise-card p {
+  max-width:31rem;
+
+  line-height:1.6;
+}
+
+
+/* ------------------------------------------------------------
+   11. LAND — REDUCE OVERSIZED GAPS
+   ------------------------------------------------------------ */
+
+#land {
+  padding-top:
+    clamp(6rem, 8vw, 9rem) !important;
+
+  padding-bottom:
+    clamp(6rem, 8vw, 9rem) !important;
+}
+
+.land-layout {
+  gap:
+    clamp(3rem, 5vw, 6rem) !important;
+}
+
+.land-card {
+  min-height:220px !important;
+}
+
+
+/* ------------------------------------------------------------
+   12. LEADERSHIP — LESS EMPTY SPACE
+   ------------------------------------------------------------ */
+
+#leadership {
+  padding-top:
+    clamp(6rem, 8vw, 9rem) !important;
+
+  padding-bottom:
+    clamp(6rem, 8vw, 9rem) !important;
+}
+
+.leadership-grid {
+  gap:
+    clamp(3.5rem, 6vw, 6rem) !important;
+}
+
+.leader-v2__content {
+  padding-left:
+    clamp(2.5rem, 5vw, 6rem) !important;
+}
+
+.leader-v2:nth-child(even)
+.leader-v2__content {
+  padding-right:
+    clamp(2.5rem, 5vw, 6rem) !important;
+}
+
+.leader-v2 h3 {
+  font-size:
+    clamp(2.7rem, 4.2vw, 5rem) !important;
+}
+
+.leader-v2__bio {
+  max-width:29rem;
+}
+
+
+/* ------------------------------------------------------------
+   13. EXPERIENCE — COMPRESS
+   ------------------------------------------------------------ */
+
+#experience {
+  padding-top:
+    clamp(5rem, 7vw, 7.5rem) !important;
+
+  padding-bottom:
+    clamp(5rem, 7vw, 7.5rem) !important;
+}
+
+.experience-list {
+  margin-top:
+    clamp(2rem, 3.5vw, 3.5rem) !important;
+}
+
+.experience-row {
+  padding:
+    clamp(1.4rem, 2.3vw, 2.2rem)
+    0 !important;
+}
+
+
+/* ------------------------------------------------------------
+   14. CONTACT
+   ------------------------------------------------------------ */
+
+#contact {
+  padding-top:
+    clamp(6rem, 8vw, 9rem) !important;
+
+  padding-bottom:
+    clamp(6rem, 8vw, 9rem) !important;
+}
+
+.contact-layout {
+  gap:
+    clamp(3rem, 5vw, 6rem);
+}
+
+
+/* ------------------------------------------------------------
+   15. LARGE DESKTOP
+   ------------------------------------------------------------ */
+
+@media (min-width:1200px) {
+
+  .immersive-chapter__inner {
+    width:min(
+      calc(100% - 4rem),
+      var(--container)
+    );
+  }
+
+  .scene-copy {
+    margin-left:0 !important;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   16. TABLET
+   ------------------------------------------------------------ */
+
+@media (max-width:1000px) {
+
+  .immersive-chapter,
+  .immersive-chapter__inner {
+    min-height:
+      92svh !important;
+  }
+
+  .scene-copy {
+    width:
+      min(45vw, 470px) !important;
+  }
+
+  .scene-fallback__media {
+    inset:
+      6rem
+      1.3rem
+      2.5rem
+      41% !important;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   17. MOBILE
+   ------------------------------------------------------------ */
+
+@media (max-width:767px) {
+
+  .section {
+    padding-block:
+      clamp(4.5rem, 15vw, 6.5rem) !important;
+  }
+
+  .immersive-chapter,
+  .immersive-chapter__inner {
+    min-height:
+      92svh !important;
+  }
+
+  .immersive-chapter__inner {
+    align-items:flex-end !important;
+
+    padding-bottom:
+      2rem !important;
+  }
+
+  .scene-fallback__media {
+    inset:
+      4.6rem
+      .65rem
+      17rem
+      10% !important;
+  }
+
+  .scene-copy {
+    width:100% !important;
+
+    padding:
+      0
+      .8rem
+      0
+      1rem !important;
+  }
+
+  .scene-copy .section-title {
+    font-size:
+      clamp(2.6rem, 12vw, 4.2rem) !important;
+  }
+
+  .scene-copy__meta {
+    margin-bottom:.8rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns:
+      1fr !important;
+  }
+
+  .project-v2,
+  .project-v2--1,
+  .project-v2--2,
+  .project-v2--3,
+  .project-v2--4 {
+    grid-column:1 !important;
+
+    min-height:
+      68svh !important;
+  }
+
+  .leader-v2__content {
+    padding:
+      1.7rem 0 0 !important;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   18. ULTRAWIDE MONITORS
+   Prevent giant empty side fields
+   ------------------------------------------------------------ */
+
+@media (min-width:1600px) {
+
+  .container {
+    width:min(
+      calc(100% - 8rem),
+      1500px
+    );
+  }
+
+  .immersive-chapter__inner {
+    width:min(
+      calc(100% - 8rem),
+      1500px
+    );
+  }
+
+  .scene-fallback__media {
+    left:
+      min(35vw, 610px) !important;
+  }
+
+}
+
+
+/* ============================================================
+   V4 — COMPOSITION / TYPOGRAPHY / DENSITY
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. FIX FIXED-HEADER SECTION CLIPPING
+   ------------------------------------------------------------ */
+
+section[id] {
+  scroll-margin-top: 120px !important;
+}
+
+#expertise,
+#portfolio,
+#land,
+#leadership,
+#experience,
+#contact {
+  position:relative;
+  padding-top:
+    clamp(8.5rem, 11vw, 12rem) !important;
+}
+
+#expertise::before,
+#portfolio::before,
+#land::before,
+#leadership::before,
+#experience::before,
+#contact::before {
+  content:"";
+  display:block;
+  height:1px;
+  margin-top:-1px;
+}
+
+
+/* ------------------------------------------------------------
+   2. LARGE SECTION HEADLINES
+   Stop staircase wrapping
+   ------------------------------------------------------------ */
+
+.section-title,
+.display-title,
+.intelligence-title {
+  text-wrap:balance;
+}
+
+#expertise .section-title,
+#portfolio .section-title,
+#land .section-title,
+#leadership .section-title {
+  max-width:11ch !important;
+
+  font-size:
+    clamp(3.8rem, 6.5vw, 7.8rem) !important;
+
+  line-height:.90 !important;
+
+  letter-spacing:-.055em;
+}
+
+
+/* likely intro / strategic headline */
+.section-intro h2,
+.intelligence-intro h2,
+.strategy-intro h2,
+.statement h2,
+.statement-title {
+  max-width:11ch !important;
+
+  font-size:
+    clamp(3.8rem, 7vw, 8.4rem) !important;
+
+  line-height:.88 !important;
+
+  letter-spacing:-.06em;
+
+  text-wrap:balance;
+}
+
+
+/* ------------------------------------------------------------
+   3. PREVENT GIANT SINGLE-COLUMN HEADLINES
+   ------------------------------------------------------------ */
+
+@media (min-width:900px) {
+
+  .section-intro,
+  .intelligence-intro,
+  .strategy-intro,
+  .statement {
+    max-width:
+      min(100%, 1180px);
+  }
+
+  .section-intro h2,
+  .intelligence-intro h2,
+  .strategy-intro h2,
+  .statement h2,
+  .statement-title {
+    width:
+      min(76vw, 1100px) !important;
+
+    max-width:
+      11ch !important;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   4. PORTFOLIO — REDUCE CARD HEIGHTS
+   ------------------------------------------------------------ */
+
+.project-v2,
+.project-v2--1,
+.project-v2--2,
+.project-v2--3,
+.project-v2--4 {
+  min-height:
+    clamp(400px, 42vw, 570px) !important;
+}
+
+.project-v2--1,
+.project-v2--2 {
+  min-height:
+    clamp(450px, 48vw, 620px) !important;
+}
+
+.project-v2__content {
+  inset:
+    auto
+    clamp(1.5rem, 2.5vw, 2.6rem)
+    clamp(1.5rem, 2.5vw, 2.6rem) !important;
+}
+
+.project-v2 h3 {
+  font-size:
+    clamp(2.4rem, 3.5vw, 4.3rem) !important;
+
+  line-height:.92 !important;
+}
+
+.project-v2 p {
+  font-size:.82rem !important;
+
+  max-width:26rem !important;
+}
+
+
+/* ------------------------------------------------------------
+   5. ABSTRACT PORTFOLIO CARDS
+   Give empty cards a real architectural composition
+   ------------------------------------------------------------ */
+
+.project-v2__geometry {
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #063238 0%,
+      #031d21 48%,
+      #011113 100%
+    ) !important;
+}
+
+.project-v2__geometry::before {
+  content:"";
+
+  position:absolute;
+
+  width:70%;
+  aspect-ratio:1;
+
+  right:-18%;
+  top:-24%;
+
+  border:
+    1px solid
+    rgba(201,165,105,.22);
+
+  border-radius:50%;
+
+  box-shadow:
+    0 0 0 45px rgba(201,165,105,.018),
+    0 0 0 100px rgba(201,165,105,.012);
+}
+
+.project-v2__geometry::after {
+  content:"";
+
+  position:absolute;
+
+  left:-10%;
+  bottom:-25%;
+
+  width:88%;
+  height:62%;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.08);
+
+  transform:
+    rotate(-16deg);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20,120,130,.06),
+      transparent
+    );
+}
+
+.project-v2__geometry i:nth-child(1) {
+  width:52% !important;
+
+  top:7% !important;
+  right:5% !important;
+
+  opacity:.75;
+}
+
+.project-v2__geometry i:nth-child(2) {
+  width:30% !important;
+
+  left:9% !important;
+  bottom:17% !important;
+
+  opacity:.62;
+}
+
+.project-v2__geometry i:nth-child(3) {
+  left:48% !important;
+
+  height:120% !important;
+
+  opacity:.75;
+}
+
+
+/* subtle project-number watermark */
+
+.project-v2:not(:has(img))::before {
+  content:"RS";
+
+  position:absolute;
+
+  z-index:1;
+
+  right:
+    clamp(1rem, 2vw, 2rem);
+
+  top:
+    clamp(1rem, 2vw, 2rem);
+
+  color:
+    rgba(255,255,255,.035);
+
+  font-size:
+    clamp(5rem, 10vw, 10rem);
+
+  font-weight:800;
+
+  line-height:1;
+
+  letter-spacing:-.08em;
+}
+
+
+/* ------------------------------------------------------------
+   6. PORTFOLIO GRID — CLEANER 2-COLUMN EDITORIAL SYSTEM
+   ------------------------------------------------------------ */
+
+.portfolio-grid {
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr)) !important;
+
+  gap:
+    clamp(1rem, 1.6vw, 1.5rem) !important;
+}
+
+.project-v2,
+.project-v2--1,
+.project-v2--2,
+.project-v2--3,
+.project-v2--4 {
+  grid-column:
+    span 1 !important;
+}
+
+
+/* give first project prominence without extreme height */
+
+.project-v2--1 {
+  grid-column:
+    span 2 !important;
+
+  min-height:
+    clamp(500px, 50vw, 660px) !important;
+}
+
+.project-v2--1 h3 {
+  font-size:
+    clamp(3.2rem, 5vw, 6rem) !important;
+}
+
+
+/* ------------------------------------------------------------
+   7. EXPERTISE — REMOVE 3×2 TABLE LOOK
+   ------------------------------------------------------------ */
+
+.expertise-grid {
+  display:block !important;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.09);
+}
+
+.expertise-card {
+  display:grid !important;
+
+  grid-template-columns:
+    70px
+    minmax(240px, .85fr)
+    minmax(280px, 1fr);
+
+  align-items:center;
+
+  gap:
+    clamp(1.5rem, 4vw, 5rem);
+
+  min-height:0 !important;
+
+  padding:
+    clamp(2.4rem, 4vw, 4.3rem)
+    0 !important;
+
+  border:0 !important;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.08) !important;
+
+  background:
+    transparent !important;
+}
+
+.expertise-card > * {
+  min-width:0;
+}
+
+.expertise-card::before {
+  font-size:.55rem;
+
+  color:
+    var(--gold);
+
+  letter-spacing:.12em;
+}
+
+.expertise-card h3 {
+  margin:0 !important;
+
+  max-width:13ch !important;
+
+  font-size:
+    clamp(2.4rem, 3.7vw, 4.8rem) !important;
+
+  line-height:.92 !important;
+
+  letter-spacing:-.05em;
+}
+
+.expertise-card p {
+  margin:0 !important;
+
+  max-width:36rem !important;
+
+  color:
+    rgba(255,255,255,.48) !important;
+
+  font-size:
+    clamp(.82rem, .9vw, .95rem);
+
+  line-height:1.65;
+}
+
+
+/* alternating slight indentation for editorial rhythm */
+
+.expertise-card:nth-child(even) h3 {
+  transform:
+    translateX(
+      clamp(0px, 1.4vw, 18px)
+    );
+}
+
+
+/* ------------------------------------------------------------
+   8. SECTION HEADING SPACING
+   ------------------------------------------------------------ */
+
+#expertise > .container > .section-title,
+#portfolio > .container > .section-title {
+  margin-top:0 !important;
+
+  margin-bottom:
+    clamp(4rem, 6vw, 6.5rem) !important;
+}
+
+
+/* ------------------------------------------------------------
+   9. REMOVE TOO-MUCH DEAD SPACE AFTER PORTFOLIO
+   ------------------------------------------------------------ */
+
+#portfolio {
+  padding-bottom:
+    clamp(5rem, 7vw, 7.5rem) !important;
+}
+
+#expertise {
+  padding-bottom:
+    clamp(5rem, 7vw, 8rem) !important;
+}
+
+
+/* ------------------------------------------------------------
+   10. BODY COPY CONTRAST
+   ------------------------------------------------------------ */
+
+.project-v2 p,
+.expertise-card p,
+.copy {
+  color:
+    rgba(245,246,241,.57) !important;
+}
+
+
+/* ------------------------------------------------------------
+   11. TABLET
+   ------------------------------------------------------------ */
+
+@media (max-width:900px) {
+
+  .portfolio-grid {
+    grid-template-columns:
+      1fr !important;
+  }
+
+  .project-v2,
+  .project-v2--1,
+  .project-v2--2,
+  .project-v2--3,
+  .project-v2--4 {
+    grid-column:
+      1 !important;
+
+    min-height:
+      clamp(430px, 66vw, 580px) !important;
+  }
+
+  .expertise-card {
+    grid-template-columns:
+      44px
+      1fr;
+
+    gap:
+      1.25rem 1.8rem;
+  }
+
+  .expertise-card p {
+    grid-column:
+      2;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   12. MOBILE
+   ------------------------------------------------------------ */
+
+@media (max-width:640px) {
+
+  #expertise,
+  #portfolio,
+  #land,
+  #leadership,
+  #experience,
+  #contact {
+    padding-top:
+      6.5rem !important;
+  }
+
+  #expertise .section-title,
+  #portfolio .section-title,
+  #land .section-title,
+  #leadership .section-title {
+    font-size:
+      clamp(3rem, 14vw, 4.6rem) !important;
+  }
+
+  .section-intro h2,
+  .intelligence-intro h2,
+  .strategy-intro h2,
+  .statement h2,
+  .statement-title {
+    width:100% !important;
+
+    max-width:10ch !important;
+
+    font-size:
+      clamp(3.2rem, 15vw, 5rem) !important;
+  }
+
+  .project-v2,
+  .project-v2--1,
+  .project-v2--2,
+  .project-v2--3,
+  .project-v2--4 {
+    min-height:
+      62svh !important;
+  }
+
+  .expertise-card {
+    grid-template-columns:1fr;
+
+    gap:.8rem;
+
+    padding:
+      2rem 0 !important;
+  }
+
+  .expertise-card p {
+    grid-column:auto;
+  }
+
+  .expertise-card h3 {
+    transform:none !important;
+
+    font-size:
+      clamp(2.3rem, 11vw, 3.8rem) !important;
+  }
+
+}
+
